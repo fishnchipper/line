@@ -8,8 +8,9 @@ Line is a NodeJS + Express App shell which can be used as a start point for deve
 
 ## REST Communication
 
-- A REST communication is initiated by calling `/init` with an encrypted permanent JWT session token returned to a caller.
-- The encrypted JWT session token created is used for the following REST API calls until the communication ends by `/end` called.
+- A REST communication is initiated by calling `/session/init` with an encrypted permanent JWT session token returned to a caller.
+- The encrypted JWT session token created is used for the following REST API calls until the communication ends by `/session/end` called.
+
 
 
 ## Where to start
