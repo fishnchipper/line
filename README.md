@@ -3,16 +3,16 @@
 
 # Line
 
-Line is a NodeJS + Express App shell which can be used for web front application or microservice with RESTful API interfaces. 
+Line is a NodeJS + Express App shell which can be used as a start point for developing an `internal microservice` with RESTful API interfaces. Line is not suitable for an `edge microservice` which services requests from authenticated clients through secure communication sessions.   
 
 
-## User Authentication
-- Google Firebase admin SDK is used but can be replaced by any 3rd-party authentication service or your own implmentation.
+## REST Communication
 
-- firebase server key is required. Create your one from firebase and then add `firebase-serverkey.json` containing serverkey json to /line_modules/firebase.
+- A REST communication is initiated by calling `/init` with an encrypted permanent JWT session token returned to a caller.
+- The encrypted JWT session token created is used for the following REST API calls until the communication ends by `/end` called.
 
 
-# Where to start
+## Where to start
 
 
 1. Install dependent packages
@@ -26,11 +26,12 @@ $ node index.js
 ==> line - (v0.1.0) https://localhost:65000
 ```
 
-3. Open a webbrowser and connect https://localhost:65000
+3. RESTFul APIs
+- `GET` `/init`
+- `GET` `/end`
 
 
 
-
-# How to duplicate this repository for your project
+## How to duplicate this repository for your microservice project
 - see https://help.github.com/en/articles/duplicating-a-repository
 
