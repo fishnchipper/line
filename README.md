@@ -24,12 +24,13 @@ $ npm install
 2. Run the app
 ```
 $ node index.js
-==> line - (v0.1.0) https://localhost:65000
+==> line - (v0.1.0) https://localhost:65001
 ```
 
 3. RESTFul APIs
 - `GET` `/session/init`
 - `GET` `/session/end`
+- `HTTP methods` `/api`
 
 
 
