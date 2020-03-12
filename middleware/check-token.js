@@ -7,9 +7,9 @@
  * @param {*} res 
  * @param {*} next 
  */
-function checkToken(req, res, next) {
+function on(req, res, next) {
 
-  console.log(">>>> req: ", req.headers);
+  //console.log(">>>> req: ", req.headers);
   let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
 
   if (token) {
@@ -17,19 +17,13 @@ function checkToken(req, res, next) {
       // Remove Bearer from string
       token = token.slice(7, token.length);
       console.log(">>>> token: ", token);
+    }else {
+      res.status(401).json({code: 'session.error', message:'invalid session token'});
     }
     next();
   } else {
-    return res.status(404).render('./no-session', function(err, html) {
-      if(err) {
-          console.log(err);
-          res.status(err.status).end();
-      }else {
-          res.set('Content-Type', 'text/html');
-          res.send(html);
-      }
-    });
+    res.status(401).json({code: 'session.error', message:'session token is not found'});
   }
 };
 
-module.exports.checkToken = checkToken;
+module.exports.on = on;

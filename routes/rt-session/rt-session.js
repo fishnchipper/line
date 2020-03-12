@@ -7,18 +7,21 @@ let getInit = require('./get-init');
 let getEnd = require('./get-end');
 
 
-/**
- *  views
- */
+router.use(function (req, res, next) {
+    req.requestTime = new Date().toISOString();
+    console.log("--- /session - request time: ", req.requestTime);
+    next();
+});
+
 // get session token 
 router.get('/init', getInit.on);
 
 // get remove session token 
 router.get('/end', getEnd.on);
 
-// close session 
+// 404 
 router.use(function(req, res) {
-    res.status(404).redirect('/404');
+    res.status(404).json({code: '404', message:'404 Not Found'});
 });
   
   

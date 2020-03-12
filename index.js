@@ -8,6 +8,16 @@ let https = require('https'),
     bodyParser = require('body-parser'),
     helmet = require('helmet');
 
+/**
+ * Routes
+ */
+let routeMain = require('./routes/rt-main'),
+    routeSession = require('./routes/rt-session/rt-session'),
+    routeApi = require('./routes/rt-api/rt-api');
+
+/**
+ * Middlewares
+ */
 let checkToken = require('./middleware/check-token');
 
 /**
@@ -19,13 +29,10 @@ let line = require('./line_modules/line');
 line.initDBService('firebase');
  */
 
-/**
- * routes
- */
-let routeMain = require('./routes/rt-main');
-let routeAuth = require('./routes/rt-auth/rt-auth');
-let routeApi = require('./routes/rt-api/rt-api');
 
+/**
+ * app init
+ */
 let app = express();
 const APPNAME = "line";
 const PORT = 65001;
@@ -33,14 +40,20 @@ const VERSION = '0.1.0';
 
 // for security purpose
 app.use(helmet());
-
+// body json parser
 app.use(bodyParser.json());
 
-// session
-app.use('/session', routeAuth.router);
+// temp code to be removed later
+app.use(function (req, res, next) {
+  req.requestTime = new Date().toISOString();
+  console.log("--- request time: ", req.requestTime);
+  next();
+});
 
-// add RESTFul APIs below
-// allow access with valid session only
+// session
+app.use('/session', routeSession.router);
+
+// add RESTFul APIs
 app.use('/api', checkToken.on, routeApi.router);
 
 // end session for other request with erro message return

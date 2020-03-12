@@ -28,8 +28,8 @@ $ node index.js
 ```
 
 3. RESTFul APIs
-- `GET` `/init`
-- `GET` `/end`
+- `GET` `/session/init`
+- `GET` `/session/end`
 
 
 
