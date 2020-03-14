@@ -13,11 +13,34 @@ router.use(function (req, res, next) {
     next();
 });
 
-// get session token 
-router.get('/init', getInit.on);
+/**
+ * @swagger
+ * tags:
+ *   name: Session
+ *   description: Session init
+ */
+
+/**
+ * @swagger
+ * path:
+ *  /session/init/:uuid:
+ *    get:
+ *      summary: Get a new session token
+ *      tags: [Session]
+ *      responses:
+ *        "200":
+ *          description: A new session token
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Response'
+ */
+router.route('/init/:uuid')
+      .get(getInit.on);
 
 // get remove session token 
-router.get('/end', getEnd.on);
+router.route('/end/:uuid') 
+      .get(getEnd.on);
 
 // 404 
 router.use(function(req, res) {
