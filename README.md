@@ -28,7 +28,7 @@ $ node index.js
 ```
 
 3. RESTFul APIs
-Go to https://localhost:65001/api/docs
+- Go to https://localhost:65001/api/docs
 
 
 
