@@ -12,8 +12,8 @@ let https = require('https'),
  * Routes
  */
 let routeMain = require('./routes/rt-main'),
-    routeSession = require('./routes/rt-session/rt-session'),
-    routeApi = require('./routes/rt-api/rt-api');
+    routeSession = require('./routes/rt-api-session-v1/rt-api-session-v1'),
+    routeApi = require('./routes/rt-api-xxx-v1/rt-api-xxx-v1');
 
 /**
  * Middlewares
@@ -41,7 +41,7 @@ const swaggerDefinition = {
     title: "Line",
     version: "1.0.0",
     description:
-      "Line is a NodeJS + Express App shell which can be used as a start point for developing an internal microservice with RESTful API interfaces. Line is not suitable for an edge microservice which services requests from authenticated clients through secure communication sessions.",
+      "Line is a NodeJS + Express App shell which can be used as a start point for developing an internal microservice with RESTful API interfaces. Line is not suitable for an edge microservice which services requests from only authenticated clients through secure communication sessions.",
     license: {
       name: "MIT",
       url: "https://github.com/fishnchipper/line/blob/master/LICENSE"
@@ -52,9 +52,6 @@ const swaggerDefinition = {
     }
   },
   servers: [
-    {
-      url: "https://localhost:65001"
-    },
     {
       url: "https://localhost:65001/api"
     }
@@ -80,7 +77,7 @@ app.get('/swagger.json', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 });
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {customCss: '.swagger-ui .topbar { display: none }'}));
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {customCss: '.swagger-ui .topbar { display: none }'}));
 
 // for security purpose
 app.use(helmet());
@@ -95,10 +92,10 @@ app.use(function (req, res, next) {
 });
 
 // session
-app.use('/session', routeSession.router);
+app.use('/api/session/v1', routeSession.router);
 
 // add RESTFul APIs
-app.use('/api', checkToken.on, routeApi.router);
+app.use('/api/xxx/v1', checkToken.on, routeApi.router);
 
 // end session for other request with erro message return
 app.use(routeMain.noResource);

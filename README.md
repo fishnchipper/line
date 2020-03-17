@@ -28,9 +28,7 @@ $ node index.js
 ```
 
 3. RESTFul APIs
-- `GET` `/session/init`
-- `GET` `/session/end`
-- `HTTP methods` `/api`
+Go to https://localhost:65001/api/docs
 
 
 

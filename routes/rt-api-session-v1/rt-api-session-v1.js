@@ -17,16 +17,23 @@ router.use(function (req, res, next) {
  * @swagger
  * tags:
  *   name: Session
- *   description: Session init
+ *   description: Session init for a new client
  */
 
+router.route('/init/:uuid')
 /**
  * @swagger
  * path:
- *  /session/init/:uuid:
+ *  /session/v1/init/{uuid}:
  *    get:
- *      summary: Get a new session token
+ *      summary: Init a new session token assigned to {uuid}
  *      tags: [Session]
+ *      parameters:
+ *      - name: uuid
+ *        in: path
+ *        description: uuid of client
+ *        schema:
+ *          type: string
  *      responses:
  *        "200":
  *          description: A new session token
@@ -35,11 +42,31 @@ router.use(function (req, res, next) {
  *              schema:
  *                $ref: '#/components/schemas/Response'
  */
-router.route('/init/:uuid')
       .get(getInit.on);
 
 // get remove session token 
 router.route('/end/:uuid') 
+/**
+ * @swagger
+ * path:
+ *  /session/v1/end/{uuid}:
+ *    get:
+ *      summary: End session token assigned to {uuid}
+ *      tags: [Session]
+ *      parameters:
+ *      - name: uuid
+ *        in: path
+ *        description: uuid of client
+ *        schema:
+ *          type: string
+ *      responses:
+ *        "200":
+ *          description: End session token
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Response'
+ */
       .get(getEnd.on);
 
 // 404 

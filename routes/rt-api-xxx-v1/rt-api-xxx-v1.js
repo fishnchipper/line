@@ -8,6 +8,13 @@ router.use(function (req, res, next) {
     next();
 });
 
+/**
+ * @swagger
+ * tags:
+ *   name: XXX
+ *   description: your defined api
+ */
+
 // add user-defined apis
 /*
 router.route('/abc')
