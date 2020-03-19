@@ -4,7 +4,7 @@ let router = express.Router();
 
 router.use(function (req, res, next) {
     req.requestTime = new Date().toISOString();
-    console.log("--- /api - request time: ", req.requestTime);
+    console.log("--- /xxx - request time: ", req.requestTime);
     next();
 });
 
