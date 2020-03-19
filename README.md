@@ -1,5 +1,5 @@
 
-![AppVeyor](https://img.shields.io/appveyor/build/gam4it/line)
+![AppVeyor](https://img.shields.io/appveyor/build/gam4it/line) 
 
 
 # Line
@@ -161,6 +161,5 @@ $ node index.js
     // end of your RESTFul APIs
     ```
 
-## How to duplicate this repository for your microservice project
-- see https://help.github.com/en/articles/duplicating-a-repository
+
 
