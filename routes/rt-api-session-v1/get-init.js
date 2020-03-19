@@ -21,7 +21,8 @@ function on(req, res, next) {
                 { algorithm: 'RS256' }
             );
         session.session_token = token;
-        console.log("  > session: ", session);
+        global.__SessionMap__.set(clientUUID, session);
+        console.log("  > session: ", global.__SessionMap__.get(clientUUID));
         res.json({code: 'session.init', message:"session is successfully created", payload:session});
     }
 }
