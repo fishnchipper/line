@@ -59,7 +59,7 @@ router.route('/init/:uuid')
  */
       .get(getInit.on);
 
-// get remove session token 
+ 
 router.route('/end/:uuid') 
 /**
  * @swagger

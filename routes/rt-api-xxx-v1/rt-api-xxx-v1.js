@@ -17,6 +17,10 @@ router.use(function (req, res, next) {
 
 // add user-defined apis
 /*
+let getABC = require('./get-abc');
+let postABC = require('./post-abc');
+let putABC = require('./put-abc');
+let deleteABC = require('./delete-abc');
 router.route('/abc')
       .get(getABC.on)
       .post(postABC.on)
