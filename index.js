@@ -30,6 +30,14 @@ line.initDBService('firebase');
  */
 
  /**
+ * app init
+ */
+let app = express();
+const APPNAME = "line";
+const PORT = 65001;
+const VERSION = '0.1.0';
+
+ /**
   * swagger setup
   */
 const swaggerJSDoc = require('swagger-jsdoc');
@@ -39,7 +47,7 @@ const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
     title: "Line",
-    version: "1.0.0",
+    version: VERSION,
     description:
       "Line is a NodeJS + Express App shell which can be used as a start point for developing an internal microservice with RESTful API interfaces. Line is not suitable for an edge microservice which services requests from only authenticated clients through secure communication sessions.",
     license: {
@@ -64,13 +72,7 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 
 
-/**
- * app init
- */
-let app = express();
-const APPNAME = "line";
-const PORT = 65001;
-const VERSION = '0.1.0';
+
 
 // openapi 3.x
 app.get('/swagger.json', function(req, res) {
