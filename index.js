@@ -71,14 +71,7 @@ const options = {
 };
 const swaggerSpec = swaggerJSDoc(options);
 
-
-
-
-// openapi 3.x
-app.get('/swagger.json', function(req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(swaggerSpec);
-});
+// openapi 3.x docs
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {customCss: '.swagger-ui .topbar { display: none }'}));
 
 // for security purpose
