@@ -1,8 +1,7 @@
-
-![AppVeyor](https://img.shields.io/appveyor/build/gam4it/line) 
-
-
 # Line
+
+
+![AppVeyor](https://img.shields.io/github/package-json/v/gam4it/line) ![AppVeyor](https://img.shields.io/appveyor/build/gam4it/line) ![AppVeyor](https://img.shields.io/github/issues/gam4it/line)
 
 Line is a NodeJS + Express App shell which can be used as a start point for developing an `internal microservice` with RESTful API interfaces. Line is not suitable for an `edge microservice` which responses to only authenticated clients.   
 
