@@ -34,31 +34,37 @@ $ node index.js
 ## How to add RESTFul API
 
  1. create a route folder (ex `rt-api-xxx-v1`) under `/routes`
-    - ex) `/routes/rt-api-session-v1`
+    - ex) `/routes/rt-api-xxx-v1`
  2. add a main route function file under the folder you created at step 1.
     - ex) `/routes/rt-api-xxx-v1/rt-api-xxx-v1.js`
  3. add the main route function to `app.use` with `checkToken.on` middleware in `index.js`
     - ex) 
         ```
+        // add your RESTFul APIs here
+        //
         let routeApiXXXV1 = require('./routes/rt-api-xxx-v1/rt-api-xxx-v1');
         app.use('/api/xxx/v1', checkToken.on, routeApiXXXV1.router);
+
+
+        //
+        // end of your RESTFul APIs
         ```
  4. define each REST API in the main route function file (ex. `rt-api-xxx-v1.js`) created above. 
-    - Instead of implementing all API in the single main route function file,
-    - create a separate file for each REST API and import that file into the main route function file.
+    - Instead of implementing all API paths in the single main route function file,
+    - create a separate file for each REST API path and import that file into the main route function file.
     - By doing this, each API is fully decoupled with each other.
-    - For example, check `/routes/rt-api-session-v1/rt-api-xxx-v1.js` file.
-    ```
-    let getABC = require('./get-abc');
-    let postABC = require('./post-abc');
-    let putABC = require('./put-abc');
-    let deleteABC = require('./delete-abc');
-    router.route('/abc')
-        .get(getABC.on)
-        .post(postABC.on)
-        .put(putABC.on)
-        .delete(deleteABC.on);
-    ```
+    - For example, check `/routes/rt-api-xxx-v1/rt-api-xxx-v1.js` file.
+        ```
+        let getABC = require('./get-abc');
+        let postABC = require('./post-abc');
+        let putABC = require('./put-abc');
+        let deleteABC = require('./delete-abc');
+        router.route('/abc')
+            .get(getABC.on)
+            .post(postABC.on)
+            .put(putABC.on)
+            .delete(deleteABC.on);
+        ```
  5. Add OpenAPI yaml definition to each REST API, then your API specification is automatically updated at `https://localhost:65001/docs`
     - For example, check `/routes/rt-api-session-v1/rt-api-session-v1.js`
     ```
@@ -147,18 +153,7 @@ $ node index.js
     */
       .get(getEnd.on);
     ```
- 6. Add the main route function created as one main route in `index.js`
- 
-    ```
-    // add your RESTFul APIs here
-    //
-    let routeApiXXXV1 = require('./routes/rt-api-xxx-v1/rt-api-xxx-v1');
-    app.use('/api/xxx/v1', checkToken.on, routeApiXXXV1.router);
 
 
-    //
-    // end of your RESTFul APIs
-    ```
-
-
+6. Add your common components under /models if any. For example, see `/models/response.js`
 
