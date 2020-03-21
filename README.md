@@ -31,7 +31,7 @@ $ node index.js
 - Go to https://localhost:65001/api/docs
 
 
-## How to add RESTFul API
+## How to add your RESTFul APIs
 
  1. create a route folder (ex `rt-api-xxx-v1`) under `/routes`
     - ex) `/routes/rt-api-xxx-v1`
