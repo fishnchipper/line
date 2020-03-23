@@ -3,8 +3,8 @@
 let express = require('express');
 let router = express.Router();
 
-let getInit = require('./get-init');
-let getEnd = require('./get-end');
+let getSessionInit = require('./get-session-init');
+let deleteSession = require('./delete-session');
 
 global.__SessionMap__ = new Map();
 
@@ -57,7 +57,7 @@ router.route('/init/:uuid')
  *                code: session.error
  *                message: invalid uuid
  */
-      .get(getInit.on);
+      .get(getSessionInit.on);
 
  
 router.route('/end/:uuid') 
@@ -65,7 +65,7 @@ router.route('/end/:uuid')
  * @swagger
  * path:
  *  /session/v1/end/{uuid}:
- *    get:
+ *    delete:
  *      summary: End session token assigned to {uuid}
  *      tags: [Session]
  *      parameters:
@@ -98,7 +98,7 @@ router.route('/end/:uuid')
  *                   code: session.error
  *                   message: session does not exist
  */
-      .get(getEnd.on);
+      .delete(deleteSession.on);
 
 
 // 404 
