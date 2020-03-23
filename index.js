@@ -34,9 +34,9 @@ line.initDBService('firebase');
  * app init
  */
 let app = express();
-const APPNAME = "line";
-const PORT = 65001;
-const VERSION = '0.1.0';
+const APPNAME = process.env.npm_package_name;
+const PORT = process.env.npm_package_config_port;
+const VERSION = process.env.npm_package_version;
 
  /**
   * swagger setup

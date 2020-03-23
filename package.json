@@ -1,13 +1,18 @@
 {
   "name": "line",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "homepage": "",
+  "repository" : {"type": "git", "url": "https://github.com/fishnchipper/line"},
   "description": "A NodeJS Express app shell",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
+  "config": {
+    "port": "65001"
+  },
   "keywords": [],
-  "author": "Seung Lee@fishnchipper.io",
+  "author": {"name":"Seung Lee", "email":"seung.lee@fishnchipper.io"},
   "license": "MIT",
   "dependencies": {
     "@google-cloud/firestore": "^3.5.0",
