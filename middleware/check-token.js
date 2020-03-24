@@ -11,8 +11,8 @@ var fs = require('fs')
 function on(req, res, next) {
 
   //console.log("  > req.headers: ", req.headers);
-  var uuid = req.headers['authorization']; // Express headers are auto converted to lowercase
-  let token = req.headers['x-access-token'] ;
+  var uuid = req.headers['comm-session-uuid']; // Express headers are auto converted to lowercase
+  let token = req.headers['comm-session-token'] ;
    // req.headers['x-access-token'] || 
 
   if (token) {
@@ -20,7 +20,7 @@ function on(req, res, next) {
     jwt.verify(token, cert, function(err, decoded) {
       //console.log("  > session_key decoded: ", decoded);
       if(typeof decoded != 'undefined' && decoded.client_uuid === uuid) {
-        //console.log("  > valid session token ");
+        console.log("  > valid session token ");
         next();
       }else {
         res.status(401).json({code: 'session.error', message:'invalid session token'});

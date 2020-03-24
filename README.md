@@ -1,17 +1,17 @@
-# Line
+# line
 
 
 ![version](https://badgen.net/badge/version/v0.1.2/orange)  ![AppVeyor](https://img.shields.io/appveyor/build/gam4it/line)
 
 
 
-Line is a NodeJS + Express App shell which can be used as a start point for developing an `internal microservice` with RESTful API interfaces. Line is not suitable for an `edge microservice` which responses to only authenticated clients.   
+`line` is a NodeJS + Express App shell which can be used as a start point for developing an `internal microservice` with RESTful API interfaces. `line` is not suitable for an `edge microservice` as it does not generate `access token` required to access resources which are accessible for only authenticated clients.   
 
 
-## REST Communication
+## Session for REST Communication
 
-- A REST communication is initiated by calling `/session/init` with an encrypted permanent JWT session token returned to a caller.
-- The encrypted JWT session token created is used for the following REST API calls until the communication ends by calling `/session/end`.
+- A REST communication is initiated by calling `/session/init` with an encrypted permanent JWT `session token` returned to a caller.
+- The encrypted JWT `session token` created is required until the communication sesion ends by calling `/session/end`.
 
 
 
@@ -158,3 +158,16 @@ $ npm start
 
 6. Add your common components under /models if any. For example, see `/models/response.js`
 
+
+
+## Access to resources 
+
+Request HTTP header must contain the following custom-defined parameters ([RFC6648](https://tools.ietf.org/html/rfc6648)) with valid values.
+
+- `Comm-Session-UUID` : uuid of requester
+- `Comm-Session-Token` : `session token` created through `/session/init/{uuid}`
+  - example
+
+    ```
+    curl https://localhost:65001/api/xxx/v1 -k -i -H "Comm-Session-UUID:b96ab5e6-f1e8-4653-ab08-4dd82ea65778" -H "Comm-Session-Token:eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uX2lkIjoiNjI4YTNkODgtODYxYS00ODNmLWFkZjMtZWMzZTMwZWJjZjIzIiwiY2xpZW50X3V1aWQiOiJiOTZhYjVlNi1mMWU4LTQ2NTMtYWIwOC00ZGQ4MmVhNjU3NzgiLCJpYXQiOjE1ODQwNzY5OTZ9.N34OokCsx0Y-cuiyJP_3_IGUjknJ4tqXktHMqTrAiZGk7tdj1jjTNQXNulNQoHV6SqQSiGmFdvMCcODoOiI48vf1P4FfqiHxYAbe3L1z8bc-bmfN_eMMtVUukkmd5SLnq5t1vaASqv7FV4BYqd5Is9YL8jdiveOcd005eT26EfJfm1rs_g4eR4oDMq9nUWM5XMFkuLzDLMLVr-4Txh6aWPb3iEhzAHRwUldBSlDiq8SV6ppoXHFHfbksrEP36dJGfJ6MUfe0xZyRs8LGY7r1yiVkGxoF_Vl6iGzNAgBTmJqKQ2H3YunM2wObAStyE0IP7iCsNNr2EDEe8b9jMB6rqw"
+    ```
