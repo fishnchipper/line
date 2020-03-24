@@ -61,7 +61,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "https://localhost:65001/api"
+      url: "https://localhost:" + PORT + "/api"
     }
   ]
 };
@@ -82,26 +82,6 @@ app.use(bodyParser.json());
 // session
 app.use('/api/session/v1', routeSession.router);
 
-
-
-/**
- *  Add your RESTFul APIs below
- * 
- *  How to add a new REST API
- * 
- *  1. create a folder at /routes/user-folder
- *  2. add route function under /routes/user-folder/route-function-file
- *  3. add the route-function-file to app.user with checkToken.on middleware
- *  4. define each REST API in route-function-file
- *     - Instead of implementing all API in the single route-function-file,
- *     - create a separate file for each REST API.
- *     - By doing this, each API is decoupled with each other.
- *     - For example, check /routes/rt-api-session-v1 folder.
- *  5. Add OpenAPI yaml definition to each REST API, then your API specification is automatically updated https://localhost:65001/docs
- *     - For example, check /routes/rt-api-session-v1/rt-api-session-v1.js
- * 
- *  Below is an example. 
- */
 // add your RESTFul APIs here
 //
 let routeApiXXXV1 = require('./routes/rt-api-xxx-v1/rt-api-xxx-v1');
