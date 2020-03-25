@@ -164,7 +164,7 @@ $ npm start
 
 Request HTTP header must contain the following custom-defined parameters ([RFC6648](https://tools.ietf.org/html/rfc6648)) with valid values.
 
-- `Comm-Session-UUID` : uuid of requester
+- `Comm-Session-UUID` : uuid ([RFC4122](https://tools.ietf.org/html/rfc4122)) of requester
 - `Comm-Session-Token` : `session token` created through `/session/init/{uuid}`
   - example
 
