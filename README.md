@@ -67,7 +67,7 @@ $ npm start
             .put(putABC.on)
             .delete(deleteABC.on);
         ```
- 5. Add OpenAPI yaml definition to each REST API, then your API specification is automatically updated at `https://localhost:65001/docs`
+ 5. Add OpenAPI yaml definition to each REST API, then your API specification is automatically updated at `https://localhost:65001/api/docs`
     - For example, check `/routes/rt-api-session-v1/rt-api-session-v1.js`
     ```
     /**
