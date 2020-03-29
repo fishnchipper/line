@@ -1,7 +1,8 @@
 # line
 
 
-![version](https://badgen.net/badge/version/v0.1.3/orange)  ![AppVeyor](https://img.shields.io/appveyor/build/gam4it/line)
+![version](https://badgen.net/badge/version/v0.1.3/orange) [![Build status](https://ci.appveyor.com/api/projects/status/0qetrigk7n8w2m40?svg=true)](https://ci.appveyor.com/project/gam4it/line)
+
 
 
 
