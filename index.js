@@ -8,6 +8,31 @@ let https = require('https'),
     bodyParser = require('body-parser'),
     helmet = require('helmet');
 
+
+/**
+ * Firebase service setup
+
+if (!fs.existsSync('./environment/firebase-serverkey.json')) {
+  console.log("[line-fb:error]./environment/firebase-serverkey.json is not found.\n\n");
+  process.exitCode = 1;
+  process.exit();
+}
+const lineFirebase = require('./line_modules/line-firebase');
+const lineFirebaseOptions = {
+  // firebase database url
+  databaseURL: "https://line-7e593.firebaseio.com",
+  // firebase Admin SDK private key 
+  keyFilename: './environment/firebase-serverkey.json'
+};
+lineFirebase.setup(lineFirebaseOptions);
+// init for firebase Authentication access
+lineFirebase.initAuthService();
+// init for firebase Database access
+lineFirebase.initDBService();
+ */
+
+ 
+
 /**
  * Routes
  */
@@ -21,14 +46,7 @@ let routeMain = require('./routes/rt-main'),
  */
 let checkToken = require('./middleware/check-token');
 
-/**
- * when firebase access is required
 
-// init firebase service access
-let line = require('./line_modules/line');
-// use firebase as back-end db
-line.initDBService('firebase');
- */
 
  /**
  * app init
